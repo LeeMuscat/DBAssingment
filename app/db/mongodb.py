@@ -1,10 +1,11 @@
 import os
 from motor.motor_asyncio import AsyncIOMotorClient
-from dotenv import load_dotenv
 
-load_dotenv()
+MONGODB_URI = os.getenv("MONGODB_URI")
 
-MONGO_URI = os.getenv("MONGO_URI")
+if not MONGODB_URI:
+    raise RuntimeError("MONGODB_URI environment variable not set")
 
-client: AsyncIOMotorClient | None = None
+client = AsyncIOMotorClient(MONGODB_URI)
 
+db = client["leeMuscatDB"]
