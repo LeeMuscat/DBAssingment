@@ -1,4 +1,4 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from app.db.mongodb import db
 from app.models.event import EventCreate, EventUpdate
 from app.utils import oid, fix_id
